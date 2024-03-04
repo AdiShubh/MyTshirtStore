@@ -1,4 +1,5 @@
 import React from "react";
+import AddCartButton from "../AddCartButton";
 
 const ProductCard = ({ product }) => {
   return (
@@ -20,6 +21,7 @@ const ProductCard = ({ product }) => {
             return <div key={index}>{color}</div>;
           })}
         </div>
+        <AddCartButton buttonText="Add To Cart" />
       </div>
     </div>
   );

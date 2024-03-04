@@ -1,5 +1,6 @@
 import React from "react";
 import { trendingProducts } from "../../Utils/index";
+import AddCartButton from "../AddCartButton";
 
 const TrendingProducts = () => {
   return (
@@ -30,6 +31,7 @@ const TrendingProducts = () => {
                       return <div key={index}>{color}</div>;
                     })}
                   </div>
+                  <AddCartButton buttonText="Add To Cart" />
                 </div>
               </div>
             );

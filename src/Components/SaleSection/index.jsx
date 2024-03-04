@@ -1,7 +1,7 @@
 import React from "react";
 import { saleProducts } from "@/Utils";
 import Image from "next/image";
-
+import AddCartButton from "../AddCartButton";
 const SaleSection = () => {
   return (
     <>
@@ -31,6 +31,7 @@ const SaleSection = () => {
                       return <div key={index}>{color}</div>;
                     })}
                   </div>
+                  <AddCartButton buttonText="Add To Cart" />
                 </div>
               </div>
             );

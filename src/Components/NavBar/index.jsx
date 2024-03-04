@@ -1,20 +1,21 @@
 "use client";
 
-import React from "react";
 import { navItems } from "../../Utils/index";
 import { CiSearch } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 import { FaRegCircleUser } from "react-icons/fa6";
 import logo from "../../../public/logo.png";
-import { useRouter } from "next/navigation";
+import { useLoginStore } from "../../Store/loginStore";
+
 import Link from "next/link";
 import MButton from "../MButton";
 import { Bubblegum_Sans } from "next/font/google";
+import { auth } from "../../app/auth";
 
 const NavBar = () => {
-  const isAdmin = true;
-  const isLogin = false;
-  const router = useRouter();
+  const isAdmin = false;
+  const isLogin = useLoginStore((state) => state.isLogin);
+  console.log(isLogin);
 
   return (
     <div className=" p-2 pb-5 flex flex-row justify-between  uppercase m-4 border-b-2 border-gray-300  ">
@@ -32,27 +33,27 @@ const NavBar = () => {
         ))}
         {/* Add Product button displays for admin only */}
         {isAdmin && (
-          <button
-            onClick={() => router.push("/addproduct")}
-            className="text-[#e17c81] font-semibold border-2 border-[#d8757a] px-1  rounded-md"
-          >
-            ADD PRODUCT
-          </button>
+          <Link href="/addproduct">
+            <div className="text-[#e17c81] font-semibold border-2 border-[#d8757a] px-1 py-1  rounded-md">
+              ADD PRODUCT
+            </div>
+          </Link>
         )}
       </div>
 
       <div className="flex flex-row gap-6 text-3xl px-6 mr-3   py-2 cursor-pointer">
         <div>
-          <CiSearch onClick={() => console.log("search clicked")} />
+          <Link href="/addproduct">
+            <CiSearch />
+          </Link>
         </div>
         <div>
           <CiShoppingCart />
         </div>
-        <div>
+        {/* <div>
           <FaRegCircleUser />
-        </div>
+        </div> */}
       </div>
-
       {!isLogin ? (
         <div className="flex gap-4 py-3 justify-center">
           <Link href="/login">
@@ -63,7 +64,9 @@ const NavBar = () => {
           </Link>
         </div>
       ) : (
-        <div className="py-3">Logout</div>
+        <Link href="/api/auth/signout" className="py-3">
+          Logout
+        </Link>
       )}
     </div>
   );

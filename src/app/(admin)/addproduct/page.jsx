@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { CldUploadWidget } from "next-cloudinary";
 
 const AddProduct = () => {
   const [resource, setResource] = useState([]);
@@ -79,25 +78,7 @@ const AddProduct = () => {
             name="images"
             className="p-5 flex flex-col gap-4 border-2 border-[#e6a4a8] rounded-sm   w-[94%] mx-auto mt-8"
           >
-            <div>
-              <CldUploadWidget
-                uploadPreset="TshirtProducts"
-                onSuccess={handleUpload}
-                // onSuccess={(result, { widget }) => {
-                //   setResource(result?.info);
-                //   console.log(result?.info);
-                //   //widget.close();
-                // }}
-              >
-                {({ open }) => {
-                  function handleOnClick(e) {
-                    //e.preventDefault();
-                    open();
-                  }
-                  return <button onClick={handleOnClick}>Upload</button>;
-                }}
-              </CldUploadWidget>
-            </div>
+            <div></div>
           </div>
         </div>
       </div>
