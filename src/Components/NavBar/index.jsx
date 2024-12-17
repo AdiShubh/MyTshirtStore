@@ -59,9 +59,9 @@ const NavBar = () => {
 
       {/* Search, Cart, and User/Logout Icons for Desktop */}
       <div className="hidden md:flex gap-6 text-2xl px-4 mr-3 py-2 cursor-pointer items-center">
-        <Link href="/search">
+        
           <CiSearch />
-        </Link>
+        
         <Link href="/cart">
           <CiShoppingCart />
         </Link>
@@ -72,7 +72,7 @@ const NavBar = () => {
 
       {/* Fixed Search and Cart Icons for Mobile */}
       <div className="md:hidden z-20 fixed bottom-4 right-4 flex gap-4 text-3xl bg-[#e69b9f] p-3 rounded-full shadow-lg">
-        <Link href="/search" className="text-white">
+        <Link href="/" className="text-white">
           <CiSearch />
         </Link>
         <Link href="/cart" className="text-white">
