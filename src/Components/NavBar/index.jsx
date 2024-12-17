@@ -71,7 +71,7 @@ const NavBar = () => {
       </div>
 
       {/* Fixed Search and Cart Icons for Mobile */}
-      <div className="md:hidden fixed bottom-4 right-4 flex gap-4 text-3xl bg-[#e69b9f] p-3 rounded-full shadow-lg">
+      <div className="md:hidden z-20 fixed bottom-4 right-4 flex gap-4 text-3xl bg-[#e69b9f] p-3 rounded-full shadow-lg">
         <Link href="/search" className="text-white">
           <CiSearch />
         </Link>
