@@ -1,73 +1,84 @@
+ 
 "use client";
 
+import { useState } from "react";
 import { navItems } from "../../Utils/index";
-import { CiSearch } from "react-icons/ci";
-import { CiShoppingCart } from "react-icons/ci";
-import { FaRegCircleUser } from "react-icons/fa6";
-import logo from "../../../public/logo.png";
+import { CiSearch, CiShoppingCart } from "react-icons/ci";
+import { FaRegUserCircle } from "react-icons/fa"; // User/Login Icon
+import { FiLogOut } from "react-icons/fi"; // Logout Icon
 import { useLoginStore } from "../../Store/loginStore";
-
 import Link from "next/link";
-import MButton from "../MButton";
-import { Bubblegum_Sans } from "next/font/google";
-import { auth } from "../../app/auth";
 
 const NavBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for toggling mobile menu
   const isAdmin = false;
   const isLogin = useLoginStore((state) => state.isLogin);
-  console.log(isLogin);
 
   return (
-    <div className=" p-2 pb-5 flex flex-row justify-between  uppercase m-4 border-b-2 border-gray-300  ">
-      {/* <img src={logo.src} className="w-[200px] h-9" /> */}
+    <div className="p-2 pb-5 text-xl flex flex-row justify-between items-center  m-4 mb-0 border-b-2 border-gray-300">
+      {/* Logo */}
       <Link href="/">
-        <p className="text-xl  text-[#C37B7F] border-2       border-[#b8676b] py-2 px-3 font-semibold">
+        <p className="text-lg md:text-xl text-gray-700 border-2 border-[#b8676b] py-1 px-2 md:py-2 md:px-3 font-semibold">
           My <span className="text-gray-700">T-Shirt</span> Store
-        </p>{" "}
+        </p>
       </Link>
-      <div className="flex flex-row gap-5  p-3  cursor-pointer ">
+
+      {/* Mobile Menu and User/Logout Icon */}
+      <div className="md:hidden flex items-center gap-4 text-lg">
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="text-3xl text-[#C37B7F] focus:outline-none"
+        >
+          ☰
+        </button>
+        <Link href={isLogin ? "/api/auth/signout" : "/login"} className="text-2xl text-[#C37B7F]">
+          {isLogin ? <FiLogOut /> : <FaRegUserCircle />}
+        </Link>
+      </div>
+
+      {/* Navigation Links */}
+      <div
+        className={`${
+          isMenuOpen ? "block" : "hidden"
+        } md:flex flex-col md:flex-row md:gap-5 absolute md:relative top-20 left-0 w-full md:w-auto bg-white md:bg-transparent md:top-0 z-10`}
+      >
         {navItems.map((item, index) => (
-          <Link href={item.path} key={index}>
+          <Link href={item.path} key={index} className="p-3 text-center md:p-0 hover:text-[#C37B7F]" onClick={() => setIsMenuOpen(false)}>
             <div>{item.name}</div>
           </Link>
         ))}
         {/* Add Product button displays for admin only */}
         {isAdmin && (
-          <Link href="/addproduct">
-            <div className="text-[#e17c81] font-semibold border-2 border-[#d8757a] px-1 py-1  rounded-md">
+          <Link href="/addproduct" className="text-center md:text-left">
+            <div className="text-[#e17c81] font-semibold border-2 border-[#d8757a] px-1 py-1 rounded-md">
               ADD PRODUCT
             </div>
           </Link>
         )}
       </div>
 
-      <div className="flex flex-row gap-6 text-3xl px-6 mr-3   py-2 cursor-pointer">
-        <div>
-          <Link href="/addproduct">
-            <CiSearch />
-          </Link>
-        </div>
-        <div>
-          <CiShoppingCart />
-        </div>
-        {/* <div>
-          <FaRegCircleUser />
-        </div> */}
-      </div>
-      {!isLogin ? (
-        <div className="flex gap-4 py-3 justify-center">
-          <Link href="/login">
-            <div>Login</div>
-          </Link>
-          <Link href="/register">
-            <div>Register</div>
-          </Link>
-        </div>
-      ) : (
-        <Link href="/api/auth/signout" className="py-3">
-          Logout
+      {/* Search, Cart, and User/Logout Icons for Desktop */}
+      <div className="hidden md:flex gap-6 text-2xl px-4 mr-3 py-2 cursor-pointer items-center">
+        <Link href="/search">
+          <CiSearch />
         </Link>
-      )}
+        <Link href="/cart">
+          <CiShoppingCart />
+        </Link>
+        <Link href={isLogin ? "/api/auth/signout" : "/login"}>
+          {isLogin ? <FiLogOut /> : <FaRegUserCircle />}
+        </Link>
+      </div>
+
+      {/* Fixed Search and Cart Icons for Mobile */}
+      <div className="md:hidden fixed bottom-4 right-4 flex gap-4 text-3xl bg-[#e69b9f] p-3 rounded-full shadow-lg">
+        <Link href="/search" className="text-white">
+          <CiSearch />
+        </Link>
+        <Link href="/cart" className="text-white">
+          <CiShoppingCart />
+        </Link>
+      </div>
     </div>
   );
 };

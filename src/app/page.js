@@ -15,10 +15,10 @@ export default function Home() {
 
     <Hero />
 
-    <TrendingProducts />
+    {/* <TrendingProducts /> */}
     <NewCollection />
     <OfferSection />
-    <SaleSection />
+    {/* <SaleSection /> */}
     <Features />
 
 

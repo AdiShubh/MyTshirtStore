@@ -1,15 +1,16 @@
 import React from "react";
 import FilterSection from "@/Components/FilterSection/page";
 import ProductCard from "@/Components/ProductCard";
+import Message from "@/Components/Message/Message";
 
 import { trendingProducts } from "../../../Utils/index";
 
 const Kids = () => {
   return (
     <div>
-      <div className="flex   ">
-        <FilterSection />
-        <div className="mx-4 w-[70%]  border border-pink-500 h-auto  mb-10 ">
+      <div className="flex flex-col  ">
+        <Message />
+        <div className=" w-[90%] mx-auto  h-auto mb-10 ">
           <div className="ml-8 mt-8">
             <p className="text-4xl mb-4">Kids </p>
             <p className="text-xl pb-4 border-b-2">

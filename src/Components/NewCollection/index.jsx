@@ -1,16 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import MButton from "../MButton";
-import collection01 from "/public/collection01.jpg";
-import collection02 from "/public/collection02.jpg";
+import collection01 from "/public/collection01_1.jpg";
+import collection02 from "/public/collection02_2.jpg";
 
 const NewCollection = () => {
   return (
     //   First Image
-    <div className="p-8 flex flex-row gap-12 justify-center ">
-      <div className="flex   items-center   ">
-        <img
-          src={collection01.src}
+    <div className="p-8 flex flex-col md:flex-row  gap-12 justify-center ">
+      <div className="flex   items-center relative  ">
+        <Image
+          src={collection01}
           alt="image"
           width={500}
           height={300}
@@ -18,7 +18,7 @@ const NewCollection = () => {
         />
 
         <div
-          className="absolute ml-6 mt-[320px] bg-zinc-600 bg-opacity-70 rounded-lg px-4      
+          className="absolute  mx-2 md:ml-6 mt-[320px] bg-zinc-600 bg-opacity-70 rounded-lg px-4      
          text-white  p-3"
         >
           <p>New Collection</p>
@@ -28,17 +28,17 @@ const NewCollection = () => {
         </div>
       </div>
       {/* Second Image */}
-      <div className="flex     ">
+      <div className="flex items-center relative    ">
         <img
           src={collection02.src}
           alt="image"
-          width={460}
+          width={500}
           height={300}
           className="rounded-md  "
         />
 
         <div
-          className="absolute ml-16 mt-[450px] bg-zinc-600 bg-opacity-70 rounded-lg px-4   
+          className="absolute w-[96%] mx-2 md:w-[90%] md:ml-6 mt-[320px] bg-zinc-600 bg-opacity-70 rounded-lg px-4   
             text-white p-3"
         >
           <p>New Collection</p>

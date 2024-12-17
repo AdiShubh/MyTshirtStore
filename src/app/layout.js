@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
 
-      <body className={inter.className}>   <ToastContainer /><NavBar />{children}<Footer /></body>
+      <body className={inter.className}>   <div className="min-h-screen flex flex-col"><ToastContainer /><NavBar /><main className="flex-grow">{children}</main><Footer /></div></body>
 
     </html>
   );

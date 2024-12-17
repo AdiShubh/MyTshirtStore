@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { getModuleBuildInfo } from "next/dist/build/webpack/loaders/get-module-build-info";
+
 
 const UserSchema = new Schema({
   name: {
